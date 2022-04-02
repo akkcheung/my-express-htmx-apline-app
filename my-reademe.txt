@@ -1,0 +1,9 @@
+2022-4-2
+
+https://htmx.org/server-examples/
+
+https://github.com/rajasegar/todomvc-htmx
+
+https://stackabuse.com/guide-to-handlebars-templating-engine-for-node/
+
+https://stackoverflow.com/questions/45769556/handles-bars-hbs-is-not-a-function
