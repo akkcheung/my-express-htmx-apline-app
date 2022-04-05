@@ -1,7 +1,17 @@
 <li id='todo-{{todo.id}}' 
-	{{#if this.done}}class="completed"{{/if}}>
+	{{#if todo.done}}class="completed"{{/if}}>
 	<input type="checkbox" 
-		{{#if this.done}}checked{{/if}}>
+		{{#if todo.done}}checked{{/if}}
+		hx-patch="/todos/{{todo.id}}"
+		hx-trigger="click"
+		hx-swap="outerHTML"
+		hx-target="#todo-{{todo.id}}"
+	/>
 	<label>{{todo.name}}</label>
-	<button>Remove</button>
+	<button 
+		hx-delete="/todos/{{todo.id}}"
+		hx-trigger="click"
+		hx-swap="outerHTML"
+		hx-target="#todo-{{todo.id}}"
+		>Remove</button>
 </li>

@@ -125,22 +125,33 @@ app.get('/todos/edit/:id', (req, res) => {
 
 app.patch('/todos/:id', (req, res) => {
 
-	const {id} = req.params
-	const todo = todos.find(item => item.id === id)
+	if (req.headers["hx-request"]){
+		const {id} = req.params
+		const todo = state.todos.find(item => item.id === id)
 
-	todo.done = !todo.done
-		
-	res.send('todo patch ') // todo
+		todo.done = !todo.done
+		actions.updateCounts()
+
+		res.set("HX-Trigger", "itemCompletionToggled")
+		res.render('partials/todo-item', { todo: todo, layout: false}) 
+
+	}
+
 })
 
 app.delete('/todos/:id', (req, res) => {
 
-	const {id} = req.params
-	const todo = todos.find(item => item.id === id)
+	if (req.headers["hx-request"]){
+		const {id} = req.params
+		const todo = state.todos.find(item => item.id === id)
 
-	todos.splice(todo, 1)
+		state.todos.splice(todo, 1)
+		actions.updateCounts()
 
-	res.send('todo delete') // todo
+		res.set("HX-Trigger", "itemDeleted")
+
+		res.send('') 
+	}
 
 })
 

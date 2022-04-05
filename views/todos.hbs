@@ -25,7 +25,7 @@
 <span
 	id="items-count"
 	hx-get="/items-count"
-	hx-trigger="itemAdded from:body"
+	hx-trigger="itemAdded from:body, itemCompletionToggled from:body, itemDeleted from:body"
 >	
 	{{>items-count count=count}}
 </span>
