@@ -7,3 +7,9 @@ https://github.com/rajasegar/todomvc-htmx
 https://stackabuse.com/guide-to-handlebars-templating-engine-for-node/
 
 https://stackoverflow.com/questions/45769556/handles-bars-hbs-is-not-a-function
+
+2022-4-4
+
+https://www.wimdeblauwe.com/blog/2021/10/04/todomvc-with-thymeleaf-and-htmx/
+
+https://github.com/wimdeblauwe/blog-example-code/tree/master/todomvc-htmx

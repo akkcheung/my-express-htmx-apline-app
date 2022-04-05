@@ -1,0 +1,31 @@
+<form id="new-todo-form">
+	<input name="todo" action="/todos" placeholder='What needs to be done?' 
+		autofocus 
+		hx-target="#todo-list"	
+		hx-swap="beforeend"
+		hx-post="/todos"
+		hx-trigger="keyup[key=='Enter']"
+	>
+</form>
+
+<form action="/toggle-all" method="put">
+	<input id="toggle-all" type="checkbox"
+		onclick="this.form.submit()">
+	<label for="toggle-all">Mark all as complete</label>
+</form>
+
+{{#if todos}}
+<ul id="todo-list" class="todo-list">
+{{#each todos }}
+	{{>todo-item todo=this}}
+{{/each}}
+</ul>
+{{/if}}
+
+<span
+	id="items-count"
+	hx-get="/items-count"
+	hx-trigger="itemAdded from:body"
+>	
+	{{>items-count count=count}}
+</span>

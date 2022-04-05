@@ -1,0 +1,7 @@
+<li id='todo-{{todo.id}}' 
+	{{#if this.done}}class="completed"{{/if}}>
+	<input type="checkbox" 
+		{{#if this.done}}checked{{/if}}>
+	<label>{{todo.name}}</label>
+	<button>Remove</button>
+</li>
