@@ -1,5 +1,5 @@
 <form id="new-todo-form">
-	<input name="todo" action="/todos" placeholder='What needs to be done?' 
+	<input id="new-todo-input" name="todo" action="/todos" placeholder='What needs to be done?' 
 		autofocus 
 		hx-target="#todo-list"	
 		hx-swap="beforeend"
@@ -8,20 +8,23 @@
 	>
 </form>
 
+<!--
 <form action="/toggle-all" method="put">
 	<input id="toggle-all" type="checkbox"
 		onclick="this.form.submit()">
 	<label for="toggle-all">Mark all as complete</label>
 </form>
+-->
 
-{{#if todos}}
 <ul id="todo-list" class="todo-list">
+{{#if todos}}
 {{#each todos }}
 	{{>todo-item todo=this}}
 {{/each}}
-</ul>
 {{/if}}
+</ul>
 
+<div id="main-footer" class="">
 <span
 	id="items-count"
 	hx-get="/items-count"
@@ -29,3 +32,5 @@
 >	
 	{{>items-count count=count}}
 </span>
+</div>
+

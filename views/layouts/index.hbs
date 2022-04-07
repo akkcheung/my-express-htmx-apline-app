@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -11,6 +11,21 @@
  	<script src="https://unpkg.com/htmx.org@1.7.0"></script>
 	
 	<script>
+		
+		htmx.on('#new-todo-input', 'htmx:afterRequest', function(evt){
+			evt.detail.elt.value = ''
+		})
+
+		htmx.on('htmx:afterSwap', function(evt){
+			let items = document.querySelectorAll('#todo-list li')
+			let mainFooter = document.getElementById('main-footer')
+
+			if (items.length >0){
+				mainFooter.style.display = 'block'
+			} else {
+				mainFooter.style.display = 'none'
+			}
+		})
 
 		document.getElementById('new-todo-form').addEventListener('submit', 
 			function(evt){
